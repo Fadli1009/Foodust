@@ -25,9 +25,5 @@ class AdminController extends Controller
         $kategori = Kategori::all();
         return view('user.index', compact('kategori', 'makanan'));
     }
-    public function create($id)
-    {
-        $makanan = Barang::find($id);
-        return view('user.index', compact('makanan'));
-    }
+
 }

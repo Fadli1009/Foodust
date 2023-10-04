@@ -29,8 +29,10 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::get('/index', [AdminController::class, 'index']);
-    Route::get('/user', [AdminController::class, 'user']);
-    Route::post('/user/barang/{id}', [KeranjangController::class, 'index']);
+    Route::get('/user', [KeranjangController::class, 'showFood']);
+    Route::get('/user/keranjang/{id}', [KeranjangController::class, 'show'])->name('cart.show');
+    Route::post('/user/keranjang/{id}', [KeranjangController::class, 'hitung']);
+    Route::get('/user/keranjang/masuk', [KeranjangController::class, 'create'])->name('keranjang.create');
     Route::resource('barang', BarangController::class);
     Route::resource('kategori', KategoriController::class);
 });
