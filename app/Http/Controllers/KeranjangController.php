@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\Keranjang;
 use Illuminate\Http\Request;
 
 class KeranjangController extends Controller
@@ -12,14 +13,7 @@ class KeranjangController extends Controller
         Request $request
     ) {
         $data = Barang::find($id);
-        if ($data) {
-            $input1 = $data->hargaBarang;
-            $input2 = $request->input('ttlpembelian');
-            $res = $input1 * $input2;
-            return view('user.keranjang.addcart', compact(['data', 'res']));
-        } else {
-            return redirect('/user');
-        }
+        return view('user.keranjang.addcart', compact(['data']));
     }
     function showFood()
     {
@@ -27,19 +21,15 @@ class KeranjangController extends Controller
         return view('user.index', compact(['makanan']));
 
     }
-    function hitung(Request $request, $id)
-    {
-        $data = Barang::find($id);
-        $val = $request->validate([
-            'ttlpembelian' => 'required|integer'
-        ]);
-        $input1 = $data->hargaBarang;
-        $input2 = $request->input('ttlpembelian');
-        $res = $input1 * $input2;
-        return view('user.keranjang.addcart', compact(['res', 'data']));
-    }
     public function create(Request $request)
     {
-        // dd($request->all());s
+        $val = $request->validate([
+            'Nama' => 'required',
+            'Harga' => 'required',
+            'Jumlah' => 'required',
+            'Total' => 'required'
+        ]);
+        Keranjang::create($val);
+        return redirect('/user')->with('success', 'Berhasil ditambahkan ke keranjang');
     }
 }

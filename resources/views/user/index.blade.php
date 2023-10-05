@@ -3,6 +3,11 @@
 @section('content')
 <div class="container">
     @include('partials.header')    
+    @if(session('success'))
+    <div class="alert alert-success" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
     <div class="row mt-3">
         @foreach ($makanan as $item)
         <div class="col-sm-6 col-xl-3">

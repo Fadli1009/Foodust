@@ -31,8 +31,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/index', [AdminController::class, 'index']);
     Route::get('/user', [KeranjangController::class, 'showFood']);
     Route::get('/user/keranjang/{id}', [KeranjangController::class, 'show'])->name('cart.show');
-    Route::post('/user/keranjang/{id}', [KeranjangController::class, 'hitung']);
-    Route::get('/user/keranjang/masuk', [KeranjangController::class, 'create'])->name('keranjang.create');
+    Route::post('/user/keranjang/masuk', [KeranjangController::class, 'create']);
     Route::resource('barang', BarangController::class);
     Route::resource('kategori', KategoriController::class);
 });
