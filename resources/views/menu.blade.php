@@ -13,7 +13,7 @@
   <!--  Body Wrapper -->
   <div class="page-wrapper container" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6"
     data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
-    @include('partials.header')
+    @include('partials.headerblank')
     <div class="row">
       @foreach ($barang as $item)
       <div class="col-md-4">

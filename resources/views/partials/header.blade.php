@@ -1,5 +1,4 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-  <h3>Lyrafood</h3>
     <ul class="navbar-nav">
       @auth
       <li class="nav-item d-block d-xl-none">
@@ -25,7 +24,7 @@
                 </a>
                 @if(Auth::user() && Auth::user()->role = "user")
                   <a href="/registrasi" class="d-flex align-items-center gap-2 dropdown-item">
-                    <i class="ti ti-user fs-6"></i>
+                    <i class="ti ti-garden-cart"></i>
                     <p class="mb-0 fs-3">Keranjang</p>
                   </a>
                 @endif
