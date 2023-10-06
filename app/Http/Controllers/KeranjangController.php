@@ -45,4 +45,9 @@ class KeranjangController extends Controller
         $data->delete();
         return redirect('/keranjang')->with('success', 'Berhasil menghapus data di keranjang');
     }
+    public function checkout()
+    {
+        $data = Keranjang::all();
+        return view('user.keranjang.checkout', compact(['data']));
+    }
 }

@@ -27,7 +27,7 @@
         <tr>
           <td>{{ $loop->iteration }}</td>
           <td>{{ $item->Nama }}</td>
-          <td>{{ $item->Harga }}</td>
+          <td>{{ number_format($item->Harga,0,'.',',') }}</td>
           <td>{{ $item->Total }}</td>
           <td>Rp {{ number_format($item->Jumlah,0,'.',',') }}</td>
           <td><a href="/keranjang/{{ $item->id }}" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg"
@@ -49,6 +49,9 @@
         <tr class="bg-primary text-light">
           <td colspan="5" class="fs-5 fw-bolder">Total</td>
           <td class="fs-3 fw-bolder">Rp {{ $rupiah }}</td>
+        </tr>
+        <tr>
+          <td colspan="6" class="text-end"><a href="/keranjang/checkout" class="btn btn-success">CheckOut</a></td>
         </tr>
       </tbody>
     </table>

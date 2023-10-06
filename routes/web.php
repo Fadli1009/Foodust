@@ -24,6 +24,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/user/keranjang/masuk', [KeranjangController::class, 'create']);
     Route::resource('barang', BarangController::class);
     Route::get('/keranjang', [KeranjangController::class, 'index']);
+    Route::get('/keranjang/checkout', [KeranjangController::class, 'checkout']);
     Route::get('/keranjang/{id}', [KeranjangController::class, 'destroy']);
     Route::resource('kategori', KategoriController::class);
 });
