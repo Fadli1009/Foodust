@@ -7,16 +7,6 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KeranjangController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('login');
     Route::post('/logins', [AuthController::class, 'login'])->name('loginfunc');
@@ -33,5 +23,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user/keranjang/{id}', [KeranjangController::class, 'show'])->name('cart.show');
     Route::post('/user/keranjang/masuk', [KeranjangController::class, 'create']);
     Route::resource('barang', BarangController::class);
+    Route::get('/keranjang', [KeranjangController::class, 'index']);
+    Route::get('/keranjang/{id}', [KeranjangController::class, 'destroy']);
     Route::resource('kategori', KategoriController::class);
 });

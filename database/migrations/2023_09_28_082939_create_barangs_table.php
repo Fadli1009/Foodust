@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->integer('hargaBarang');
             $table->unsignedBigInteger('kategoriBarang');
             $table->integer('stokBarang');
+            $table->text('fotoBarang');
             $table->timestamps();
             $table->foreign('kategoriBarang')->references('id')->on('kategori');
         });

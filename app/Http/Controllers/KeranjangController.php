@@ -30,6 +30,18 @@ class KeranjangController extends Controller
             'Total' => 'required'
         ]);
         Keranjang::create($val);
-        return redirect('/user')->with('success', 'Berhasil ditambahkan ke keranjang');
+        return redirect('/keranjang')->with('success', 'Berhasil ditambahkan ke keranjang');
+    }
+    public function index()
+    {
+        $data = Keranjang::all();
+        $sum = Keranjang::sum('Jumlah');
+        return view('user.keranjang.index', compact(['data', 'sum']));
+    }
+    public function destroy($id)
+    {
+        $data = Keranjang::find($id);
+        $data->delete();
+        return redirect('/keranjang');
     }
 }
