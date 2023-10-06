@@ -1,4 +1,5 @@
 @extends('template.blank')
+@section('title','Lyra | Keranjang')
 @section('content')
 <div class="container-fluid">
   @include('partials.headerblank')
@@ -28,7 +29,7 @@
           <td>{{ $item->Nama }}</td>
           <td>{{ $item->Harga }}</td>
           <td>{{ $item->Total }}</td>
-          <td>{{ $item->Jumlah }}</td>
+          <td>Rp {{ number_format($item->Jumlah,0,'.',',') }}</td>
           <td><a href="/keranjang/{{ $item->id }}" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg"
                 class="icon icon-tabler icon-tabler-trash-filled" width="24" height="24" viewBox="0 0 24 24"
                 stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -45,9 +46,9 @@
             <td colspan="6" class="text-center">Keranjang Kosong</td>
           </tr>
         @endforelse
-        <tr>
+        <tr class="bg-primary text-light">
           <td colspan="5" class="fs-5 fw-bolder">Total</td>
-          <td class="fs-3 fw-bolder">Rp. {{ $sum }}</td>
+          <td class="fs-3 fw-bolder">Rp {{ $rupiah }}</td>
         </tr>
       </tbody>
     </table>

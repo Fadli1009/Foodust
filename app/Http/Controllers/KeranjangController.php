@@ -36,12 +36,13 @@ class KeranjangController extends Controller
     {
         $data = Keranjang::all();
         $sum = Keranjang::sum('Jumlah');
-        return view('user.keranjang.index', compact(['data', 'sum']));
+        $rupiah = number_format($sum, 0, ',', '.');
+        return view('user.keranjang.index', compact(['data', 'rupiah']));
     }
     public function destroy($id)
     {
         $data = Keranjang::find($id);
         $data->delete();
-        return redirect('/keranjang');
+        return redirect('/keranjang')->with('success', 'Berhasil menghapus data di keranjang');
     }
 }

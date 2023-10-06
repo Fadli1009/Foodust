@@ -63,7 +63,7 @@
                                     </div>
                                 </td>
                                 <td class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0 fs-4">Rp. {{ $item->hargaBarang }}</h6>
+                                    <h6 class="fw-semibold mb-0 fs-4">Rp {{ number_format($item->hargaBarang,0,'.',',') }}</h6>
                                 </td>
                             </tr>
                             @endforeach
@@ -86,7 +86,7 @@
             </div>
             <div class="card-body pt-3 p-4">
                 <h6 class="fw-semibold fs-4">{{ $item->namaBarang }}</h6>
-                <h6 class="fw-semibold fs-4">{{ $item->hargaBarang }}. Rp</h6>
+                <h6 class="fw-semibold fs-4">Rp {{ number_format($item->hargaBarang,0,'.',',') }}</h6>
 
             </div>
         </div>
