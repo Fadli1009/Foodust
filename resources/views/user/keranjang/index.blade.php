@@ -18,7 +18,7 @@
           <th>Nama Makanan</th>
           <th>Harga</th>
           <th>Total</th>
-          <th>Jumalah</th>
+          <th>Jumlah</th>
           <th>Hapus</th>
         </tr>
       </thead>
@@ -51,7 +51,7 @@
           <td class="fs-3 fw-bolder">Rp {{ $rupiah }}</td>
         </tr>
         <tr>
-          <td colspan="6" class="text-end"><a href="/keranjang/checkout" class="btn btn-success">CheckOut</a></td>
+          <td colspan="6" class="text-end"><a href="/keranjang/checkout" class="btn btn-info">CheckOut</a></td>
         </tr>
       </tbody>
     </table>
