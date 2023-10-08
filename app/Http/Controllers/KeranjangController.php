@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\Barang;
+use App\Models\DataUser;
 use App\Models\Keranjang;
 use Illuminate\Http\Request;
 
@@ -51,5 +53,31 @@ class KeranjangController extends Controller
         $sum = Keranjang::sum('Jumlah');
         $rupiah = number_format($sum, 0, ',', '.');
         return view('user.keranjang.checkout', compact(['data', 'rupiah']));
+    }
+    public function verifyUser(Request $request)
+    {
+        // dd($request->all());
+        $val = $request->validate([
+            'nama' => 'required',
+            'telp' => 'required',
+            'alamat' => 'required',
+            'metodebayar' => 'required'
+        ]);
+        DataUser::create($val);
+        return redirect('/keranjang/checkout/thanks');
+    }
+    public function thanks()
+    {
+        return view('user.thanks');
+    }
+    public function printpdf()
+    {
+        $sum = Keranjang::sum('Jumlah');
+        $rupiah = number_format($sum, 0, ',', '.');
+        $user = DataUser::all();
+        $datakeranjang = Keranjang::all();
+        $pdf = PDF::loadView('user.print', compact(['datakeranjang', 'rupiah', 'user']));
+        $pdf->setPaper('A4', 'potrait');
+        return $pdf->stream('PDF Pemesanan Lyrafood.pdf');
     }
 }

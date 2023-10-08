@@ -1,4 +1,5 @@
 @extends('template.blank')
+@section('title','Lyra | Checkout')
 @section('content')
 <div class="container-fluid">
     @include('partials.headerblank')
@@ -7,8 +8,9 @@
     <div class="container">
         <div class="row my-5 d-flex justify-content-between">
             <div class="col-lg-7 mr-5 card p-4">
-                <form action="" method="post">
+                <form action="{{ url('/keranjang/checkout/verify') }}" method="post">
                     @csrf
+                    @method('post')
                     <div class="mb-3">
                         <label for="nama">Nama</label>
                         <input type="text" class="form-control mt-3" id="nama" name="nama" >
@@ -23,10 +25,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="nama">Metode Pembayaran</label>
-                        <input type="text" class="form-control mt-3" id="nama" name="pembayaran" value="COD" readonly>
+                        <input type="text" class="form-control mt-3" id="nama" name="metodebayar" value="COD" readonly>
                     </div>
-                    <div class="mb-3">
-                        <button class="btn btn-primary" type="submit">Cetak</button>
+                    <div class="mb-3 d-flex justify-content-between">
+                        <button class="btn btn-primary" id='tombol1' type="submit">Buat Pesanan</button>
+        
                     </div>
                 </form>
             </div>
@@ -43,4 +46,9 @@
         </div>
     </div>
 </div>
+<script>
+    document.getElementById('tombol1').addEventListener('click',function(){
+        document.getElementById('tombol1')
+    })
+</script>
 @endsection
