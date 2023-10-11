@@ -24,7 +24,7 @@
                 <div class="card-body pt-3 p-4">
                     <h6 class="fw-semibold fs-4">{{ $item->namaBarang }}</h6>
                     <div class="d-flex align-items-center justify-content-between">
-                        <h6 class="fw-semibold fs-4 mb-0">Rp. {{ $item->hargaBarang }}</h6>
+                        <h6 class="fw-semibold fs-4 mb-0">Rp. {{ number_format($item->hargaBarang,0,'.',',') }}</h6>
                 
                     </div>
                 </div>
