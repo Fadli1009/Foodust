@@ -80,4 +80,9 @@ class KeranjangController extends Controller
         $pdf->setPaper('A4', 'potrait');
         return $pdf->stream('PDF Pemesanan Lyrafood.pdf');
     }
+    public function hitung()
+    {
+        $data = Keranjang::count();
+        return view('partials.header', compact(['data']));
+    }
 }

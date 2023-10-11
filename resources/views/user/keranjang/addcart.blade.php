@@ -3,6 +3,11 @@
 @section('content')
 <div class="container-fluid">
     @include('partials.header')
+    @if (session('failed'))
+        <div class="alert alert-danger">
+            {{ session('failed') }}
+        </div>
+    @endif
     <div class="card p-3">
         <h3 class="my-4">Keranjang</h3>
         <form action="{{ url('/user/keranjang/masuk') }}" method="post">

@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::create('keranjangs', function (Blueprint $table) {
             $table->id();
-            $table->text('Nama');
+            $table->text('Nama')->unique;
             $table->integer('Harga');
             $table->integer('Total');
             $table->integer('Jumlah');

@@ -14,7 +14,13 @@
                     <p class="mb-0 fs-3">My Profile</p>
                   </a>
                   @if(Auth::user() && Auth::user()->role == "user")
-                    <a href="{{ url('/keranjang') }}" class="d-flex align-items-center gap-2 dropdown-item">
+                    <a href="{{ url('/keranjang') }}" class="d-flex align-items-center gap-2 dropdown-item position-relative">
+                      <span class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-danger fs-1">
+                        @php
+                          $data = DB::table('keranjangs')->count()
+                        @endphp
+                        {{ $data }}
+                        </span>
                       <i class="ti ti-garden-cart"></i>
                       <p class="mb-0 fs-3">Keranjang</p>
                     </a>
