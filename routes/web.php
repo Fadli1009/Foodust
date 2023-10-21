@@ -30,4 +30,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/keranjang/checkout/thanks', [KeranjangController::class, 'thanks']);
     Route::get('/keranjang/{id}', [KeranjangController::class, 'destroy']);
     Route::resource('kategori', KategoriController::class);
+    Route::get('/report', [AdminController::class, 'report']);
 });

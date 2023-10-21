@@ -70,7 +70,7 @@
                 <span class="hide-menu">Reporting</span>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
+                <a class="sidebar-link" href="{{ url('/report') }}" aria-expanded="false">
                     <span>
                         <i class="ti ti-chart-infographic"></i>
                     </span>

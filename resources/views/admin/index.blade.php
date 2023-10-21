@@ -16,6 +16,13 @@
             <p class="small text-muted">Total kategori makanan</p>
         </div>
     </div>
+    <div class="card col-md- col-md-12" style="width: 25rem">
+        <div class="card-body ">
+            <div class="lead">Total Pembeli</div>
+            <h2 class="card-title">{{ $datauser }}</h2>
+            <p class="small text-muted">Total Pelanggan</p>
+        </div>
+    </div>
 </div>
 <div class="row">
     <div class="col-lg-8 d-flex align-items-stretch w-100">

@@ -50,6 +50,7 @@ class KeranjangController extends Controller
     public function checkout()
     {
         $data = Keranjang::all();
+        $databarang = Barang::all();
         $sum = Keranjang::sum('Jumlah');
         $rupiah = number_format($sum, 0, ',', '.');
         return view('user.keranjang.checkout', compact(['data', 'rupiah']));
