@@ -4,9 +4,9 @@
 <div class="container-fluid">
     @include('partials.header')
     @if (session('failed'))
-        <div class="alert alert-danger">
-            {{ session('failed') }}
-        </div>
+    <div class="alert alert-danger">
+        {{ session('failed') }}
+    </div>
     @endif
     <div class="card p-3">
         <h3 class="my-4">Keranjang</h3>
@@ -28,20 +28,26 @@
                 <input type="number" class="form-control" id="totalHarga" name='Total' value="">
             </div>
             <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Stok Makanan</label>
+                <input type="number" class="form-control" id="hargaMakanan" name='stok' readonly
+                    value="{{$data->stokBarang }}">
+            </div>
+            <div class="mb-3">
                 <button class="btn btn-primary" onclick="tambah()" type="button">Tambah</button>
             </div>
+
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Total Harga</label>
                 <input type="number" class="form-control" id="ttlharga" name='Jumlah' readonly>
             </div>
             <div class="modal-footer">
-               <button type="submit" class="btn btn-primary">Masukan Keranjang</button>
+                <button type="submit" class="btn btn-primary">Masukan Keranjang</button>
             </div>
         </form>
     </div>
 </div>
 <script>
-function tambah(){
+    function tambah(){
     event.preventDefault()
     var input1 = parseInt(document.getElementById('hargaMakanan').value)
     var input2 = parseInt(document.getElementById('totalHarga').value)

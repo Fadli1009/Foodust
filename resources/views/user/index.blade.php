@@ -2,7 +2,7 @@
 @section('title','Lyra | Home')
 @section('content')
 <div class="container-fluid">
-    @include('partials.header')    
+    @include('partials.header')
     @if(session('success'))
     <div class="alert alert-success" role="alert">
         {{ session('success') }}
@@ -17,15 +17,16 @@
                     <a href="javascript:void(0)"><img src="{{ asset($item->fotoBarang) }}"
                             class="card-img-top rounded-0" alt="..." height="300"></a>
                     <a href="{{ url('/user/keranjang',$item->id) }}"
-                        class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3 border-0"
-                        ><i class="ti ti-basket fs-4"></i>
+                        class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3 border-0"><i
+                            class="ti ti-basket fs-4"></i>
                     </a>
                 </div>
                 <div class="card-body pt-3 p-4">
                     <h6 class="fw-semibold fs-4">{{ $item->namaBarang }}</h6>
+                    <h6 class="fw-semibold fs-4">Stok :{{ $item->stokBarang }}</h6>
                     <div class="d-flex align-items-center justify-content-between">
                         <h6 class="fw-semibold fs-4 mb-0">Rp. {{ number_format($item->hargaBarang,0,'.',',') }}</h6>
-                
+
                     </div>
                 </div>
             </div>

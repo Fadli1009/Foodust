@@ -4,7 +4,7 @@
 <div class="container-fluid">
     @include('partials.headerblank')
     <h1 class="mb-3">Checkout</h1>
-    <a href="/keranjang" class="btn btn-primary mb-3">&leftarrow;  Back</a>
+    <a href="/keranjang" class="btn btn-primary mb-3">&leftarrow; Back</a>
     <div class="container">
         <div class="row my-5 d-flex justify-content-between">
             <div class="col-lg-7 mr-5 card p-4">
@@ -13,7 +13,7 @@
                     @method('post')
                     <div class="mb-3">
                         <label for="nama">Nama</label>
-                        <input type="text" class="form-control mt-3" id="nama" name="nama" >
+                        <input type="text" class="form-control mt-3" id="nama" name="nama">
                     </div>
                     <div class="mb-3">
                         <label for="nama">No Hp</label>
@@ -29,17 +29,17 @@
                     </div>
                     <div class="mb-3 d-flex justify-content-between">
                         <button class="btn btn-primary" id='tombol1' type="submit">Buat Pesanan</button>
-        
+
                     </div>
                 </form>
             </div>
             <div class="col-lg-4 card p-4 overflow-y-scroll">
                 <h4 class="mb-4">Pesanan Anda</h4>
-                @foreach ($data as $item)    
-                    <div class="item d-flex align-items-center justify-content-between mb-4">
-                        <h6>{{ $item->Nama }} <span class="ms-2 text-secondary">x{{ $item->Total }}</span></h6>
-                        <span>Rp.{{ number_format($item->Jumlah, 0,'.','.') }}</span>
-                    </div>
+                @foreach ($data as $item)
+                <div class="item d-flex align-items-center justify-content-between mb-4">
+                    <h6>{{ $item->Nama }} <span class="ms-2 text-secondary">x{{ $item->Total }}</span></h6>
+                    <span>Rp.{{ number_format($item->Jumlah, 0,'.','.') }}</span>
+                </div>
                 @endforeach
                 <h6>Total Pesanan: <span class="ms-2 text-danger">Rp.{{ $rupiah }}</span></h6>
             </div>

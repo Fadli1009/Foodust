@@ -37,7 +37,6 @@ class AuthController extends Controller
             }
         }
         return back()->withErrors('Username dan Password tidak ditemukan WOI !!!');
-
     }
 
     public function register()

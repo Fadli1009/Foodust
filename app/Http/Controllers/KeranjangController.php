@@ -21,7 +21,6 @@ class KeranjangController extends Controller
     {
         $makanan = Barang::all();
         return view('user.index', compact(['makanan']));
-
     }
     public function create(Request $request)
     {
@@ -29,10 +28,15 @@ class KeranjangController extends Controller
             'Nama' => 'required',
             'Harga' => 'required',
             'Jumlah' => 'required',
-            'Total' => 'required'
+            'Total' => 'required',
+            'stok'=>'required'
         ]);
-        Keranjang::create($val);
-        return redirect('/keranjang')->with('success', 'Berhasil ditambahkan ke keranjang');
+        if($request['stok']<$request['Total']){
+            return redirect('/user')->withErrors('stok tidak cukup');
+        }else{
+            Keranjang::create($val);
+            return redirect('/keranjang')->with('success', 'Berhasil ditambahkan ke keranjang');
+        }
     }
     public function index()
     {

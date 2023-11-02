@@ -19,7 +19,6 @@ class BarangController extends Controller
     {
         $data = Kategori::all();
         return view('admin.tambah', compact(['data']));
-
     }
 
     public function store(Request $request)
