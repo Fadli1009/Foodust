@@ -9,6 +9,10 @@
     </div>
     @endif
     <div class="row mt-3">
+        <div class="input-group input-group-lg">
+            <input type="text" class="form-control" placeholder="Search" name="cari">
+            <button type="button" class="btn btn-primary">Go</button>
+        </div>
         <h3 class="my-3">Data Makanan</h3>
         @foreach ($makanan as $item)
         <div class="col-sm-6 col-xl-3">

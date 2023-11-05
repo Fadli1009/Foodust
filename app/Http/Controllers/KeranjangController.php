@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use PDF;
 use App\Models\Barang;
 use App\Models\DataUser;
@@ -25,16 +26,19 @@ class KeranjangController extends Controller
     public function create(Request $request)
     {
         $val = $request->validate([
-            'Nama' => 'required',
-            'Harga' => 'required',
-            'Jumlah' => 'required',
-            'Total' => 'required',
+            'Nama' => ['required'],
+            'Harga' => ['required'],
+            'Jumlah' => ['required'],
+            'Total' =>[ 'integer','required'],
             'stok'=>'required'
         ]);
         if($request['stok']<$request['Total']){
             return redirect('/user')->withErrors('stok tidak cukup');
         }else{
-            Keranjang::create($val);
+            $barang = Barang::where('namaBarang',$request->input('Nama'))->first();
+            $jumlah = $request->input('Total');
+            $barang->stokBarang -= $jumlah;
+            $barang->save();
             return redirect('/keranjang')->with('success', 'Berhasil ditambahkan ke keranjang');
         }
     }

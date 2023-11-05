@@ -21,7 +21,7 @@ class AdminController extends Controller
         return view('admin.index', compact('ttldata', 'ttlcategory', 'makanan', 'kategori', 'makananTable', 'datauser'));
     }
 
-    public function user()
+    public function user(Request $request)
     {
         $makanan = Barang::all();
         $kategori = Kategori::all();
