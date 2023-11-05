@@ -71,10 +71,15 @@ class KeranjangController extends Controller
             'telp' => 'required',
             'alamat' => 'required',
             'metodebayar' => 'required'
+        ],[
+            'nama.required'=>'nama wajib diisi',
+            'telp.required'=>'nomor hp wajib diisi',
+            'alamat.required'=>'Alamat wajib diisi',
+            'metodebayar.required'=>'Isi terlebih dahulu pembayarannya !'
         ]);
         $sum = Keranjang::sum('Jumlah');
         if($request['metodebayar'] < $sum){
-            return redirect('/keranjang/checkout')->with('warning','Uang anda tidak cukup');
+            return back()->withErrors('Uang anda tidak cukup');
         }else{
             DataUser::create($val);
             return redirect('/keranjang/checkout/thanks');

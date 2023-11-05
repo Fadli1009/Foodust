@@ -87,7 +87,9 @@
             @endforeach
         </table>
         <div class="total">
+            <p>Total Uang:Rp.{{ $rupiah }}</p>
             <p>Total Pembelian:Rp.{{ $rupiah }}</p>
+            <p>Total Kembalian:Rp.{{ $rupiah }}</p>
         </div>
         <footer>
             <p>Selamat Makan</p>

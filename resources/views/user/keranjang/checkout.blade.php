@@ -8,6 +8,15 @@
     <div class="container">
         <div class="row my-5 d-flex justify-content-between">
             <div class="col-lg-7 mr-5 card p-4">
+                @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li style="list-style: circle; margin-left: 10px">{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
                 <form action="{{ url('/keranjang/checkout/verify') }}" method="post">
                     @csrf
                     @method('post')
@@ -28,10 +37,11 @@
                         @if (session('warning'))
                         <p class="text-danger">{{ session('warning')}}</p>
                         @endif
-                        <input type="number" class="form-control mt-3" id="nama" name="metodebayar">
+                        <input type="number" class="form-control mt-3" id="nama" name="metodebayar" id="bayar">
                     </div>
                     <div class="mb-3 d-flex justify-content-between">
-                        <button class="btn btn-primary" id='tombol1' type="submit">Buat Pesanan</button>
+                        <button class="btn btn-primary" id='tombol1' type="submit">Buat
+                            Pesanan</button>
                     </div>
                 </form>
             </div>
@@ -40,7 +50,7 @@
                 @foreach ($data as $item)
                 <div class="item d-flex align-items-center justify-content-between mb-4">
                     <h6>{{ $item->Nama }} <span class="ms-2 text-secondary">x{{ $item->Total }}</span></h6>
-                    <span>Rp.{{ number_format($item->Jumlah, 0,'.','.') }}</span>
+                    <span id="harga">Rp.{{ number_format($item->Jumlah, 0,'.','.') }}</span>
                 </div>
                 @endforeach
                 <h6>Total Pesanan: <span class="ms-2 text-danger">Rp.{{ $rupiah }}</span></h6>
