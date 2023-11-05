@@ -20,6 +20,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::get('/index', [AdminController::class, 'index']);
     Route::get('/user', [KeranjangController::class, 'showFood']);
+    Route::get('/user/profile',[AdminController::class,'profile']);
     Route::get('/user/keranjang/{id}', [KeranjangController::class, 'show'])->name('cart.show');
     Route::post('/user/keranjang/masuk', [KeranjangController::class, 'create']);
     Route::resource('barang', BarangController::class);

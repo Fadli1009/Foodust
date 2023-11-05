@@ -38,6 +38,7 @@ class KeranjangController extends Controller
             $barang = Barang::where('namaBarang',$request->input('Nama'))->first();
             $jumlah = $request->input('Total');
             $barang->stokBarang -= $jumlah;
+            $barang->save();
             Keranjang::create($val);
             return redirect('/keranjang')->with('success', 'Berhasil ditambahkan ke keranjang');
         }
@@ -55,7 +56,7 @@ class KeranjangController extends Controller
         $data->delete();
         return redirect('/keranjang')->with('success', 'Berhasil menghapus data di keranjang');
     }
-    public function checkout()
+    public function checkout(Request $request)
     {
         $data = Keranjang::all();
         $databarang = Barang::all();
@@ -65,15 +66,19 @@ class KeranjangController extends Controller
     }
     public function verifyUser(Request $request)
     {
-        // dd($request->all());
         $val = $request->validate([
             'nama' => 'required',
             'telp' => 'required',
             'alamat' => 'required',
             'metodebayar' => 'required'
         ]);
-        DataUser::create($val);
-        return redirect('/keranjang/checkout/thanks');
+        $sum = Keranjang::sum('Jumlah');
+        if($request['metodebayar'] < $sum){
+            return redirect('/keranjang/checkout')->with('warning','Uang anda tidak cukup');
+        }else{
+            DataUser::create($val);
+            return redirect('/keranjang/checkout/thanks');
+        }
     }
     public function thanks()
     {

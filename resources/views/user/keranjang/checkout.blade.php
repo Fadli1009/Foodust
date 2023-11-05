@@ -4,7 +4,7 @@
 <div class="container-fluid">
     @include('partials.headerblank')
     <h1 class="mb-3">Checkout</h1>
-    <a href="/keranjang" class="btn btn-primary mb-3">&leftarrow; Back</a>
+    <a href="/keranjang" class="btn btn-primary mb-3"><i class="ti ti-arrow-left"></i> Back</a>
     <div class="container">
         <div class="row my-5 d-flex justify-content-between">
             <div class="col-lg-7 mr-5 card p-4">
@@ -24,12 +24,14 @@
                         <textarea name="alamat" class="form-control mt-3" id="" cols="30" rows="10"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="nama">Metode Pembayaran</label>
-                        <input type="text" class="form-control mt-3" id="nama" name="metodebayar" value="COD" readonly>
+                        <label for="nama">Bayar Disini :</label>
+                        @if (session('warning'))
+                        <p class="text-danger">{{ session('warning')}}</p>
+                        @endif
+                        <input type="number" class="form-control mt-3" id="nama" name="metodebayar">
                     </div>
                     <div class="mb-3 d-flex justify-content-between">
                         <button class="btn btn-primary" id='tombol1' type="submit">Buat Pesanan</button>
-
                     </div>
                 </form>
             </div>
@@ -46,9 +48,4 @@
         </div>
     </div>
 </div>
-<script>
-    document.getElementById('tombol1').addEventListener('click',function(){
-        document.getElementById('tombol1')
-    })
-</script>
 @endsection
