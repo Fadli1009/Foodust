@@ -25,20 +25,20 @@ class KeranjangController extends Controller
     }
     public function create(Request $request)
     {
-        $val = $request->validate([
+        if($request['stok']<$request['Total']){
+            return redirect('/user')->withErrors('stok tidak cukup');
+        }else{
+            $val = $request->validate([
             'Nama' => ['required'],
             'Harga' => ['required'],
             'Jumlah' => ['required'],
             'Total' =>[ 'integer','required'],
             'stok'=>'required'
         ]);
-        if($request['stok']<$request['Total']){
-            return redirect('/user')->withErrors('stok tidak cukup');
-        }else{
             $barang = Barang::where('namaBarang',$request->input('Nama'))->first();
             $jumlah = $request->input('Total');
             $barang->stokBarang -= $jumlah;
-            $barang->save();
+            Keranjang::create($val);
             return redirect('/keranjang')->with('success', 'Berhasil ditambahkan ke keranjang');
         }
     }

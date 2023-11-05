@@ -17,14 +17,15 @@
       @foreach ($barang as $item)
       <div class="col-md-4">
         <div class="card pt-4">
-          <h5 class="card-title fw-semibold mb-4">Menu {{ $loop->iteration }}</h5>
+          <h5 class="card-title fw-semibold mb-4 ps-2">Menu {{ $loop->iteration }}</h5>
           <img src="{{ asset($item->fotoBarang) }}" class="card-img-top" height="300">
           <div class="card-body">
             <h5 class="card-title">Nama : {{ $item->namaBarang }}</h5>
             <h5 class="card-title">Harga : {{ number_format($item->hargaBarang, 0,'.',',') }}</h5>
             <h5 class="card-title">Kategori : {{ $item->kategoriBarang }}</h5>
             <h5 class="card-title">Stok : {{ $item->stokBarang }}</h5>
-            <a href="/user" class="btn btn-primary my-3">Beli</a>
+            @if ($item->stokBarang > 0) <a href="/user" class="btn btn-primary my-3">Beli</a>
+            @endif
           </div>
         </div>
       </div>

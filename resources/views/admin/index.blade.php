@@ -70,7 +70,8 @@
                                     </div>
                                 </td>
                                 <td class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0 fs-4">Rp {{ number_format($item->hargaBarang,0,'.',',') }}</h6>
+                                    <h6 class="fw-semibold mb-0 fs-4">Rp {{ number_format($item->hargaBarang,0,'.',',')
+                                        }}</h6>
                                 </td>
                             </tr>
                             @endforeach
