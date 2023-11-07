@@ -8,6 +8,7 @@ use App\Models\Barang;
 use App\Models\DataUser;
 use App\Models\Keranjang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KeranjangController extends Controller
 {
@@ -33,8 +34,10 @@ class KeranjangController extends Controller
             'Harga' => ['required'],
             'Jumlah' => ['required'],
             'Total' =>[ 'integer','required'],
-            'stok'=>'required'
+            'stok'=>['required'],
+            'id_user'=> ['required']
         ]);
+        // dd($val);
             $barang = Barang::where('namaBarang',$request->input('Nama'))->first();
             $jumlah = $request->input('Total');
             $barang->stokBarang -= $jumlah;
@@ -45,7 +48,9 @@ class KeranjangController extends Controller
     }
     public function index()
     {
-        $data = Keranjang::all();
+        $user = Auth::user();
+        $data = Keranjang::where('id_user',$user->id)->get();
+        // $data = Keranjang::all();
         $sum = Keranjang::sum('Jumlah');
         $rupiah = number_format($sum, 0, ',', '.');
         return view('user.keranjang.index', compact(['data', 'rupiah']));

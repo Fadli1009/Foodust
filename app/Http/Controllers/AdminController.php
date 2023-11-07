@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Models\DataUser;
 use App\Models\Kategori;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,6 +24,16 @@ class AdminController extends Controller
 
     public function profile(){
         return view('user.profile');
+    }
+    public function createprofile(Request $request, User $user){
+        $val = $request->validate([
+            'name'=>'required',
+            'email'=>'required|email'. $user->id,
+            'password'=>'required'
+        ]);
+        $val['password'] = bcrypt($request->password);
+        $user->update($val);
+        return back()->with('success','Berhasil update data');
     }
     public function user(Request $request)
     {

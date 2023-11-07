@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Keranjang extends Model
 {
     use HasFactory;
-    protected $fillable = ['Nama', 'Jumlah', 'Total', 'Harga'];
+    protected $fillable = ['Nama', 'Jumlah', 'Total', 'Harga','id_user'];
 
     public function user(){
         return $this->belongsTo(User::class);

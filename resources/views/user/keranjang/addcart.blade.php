@@ -13,6 +13,7 @@
         <form action="{{ url('/user/keranjang/masuk') }}" method="post">
             @csrf
             @method('post')
+            <input type="hidden" value="{{ Auth::user()->id }}" name="id_user">
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Nama Makanan</label>
                 <input type="text" class="form-control" id="exampleInputPassword1" name='Nama' readonly

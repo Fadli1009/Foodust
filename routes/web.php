@@ -21,6 +21,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/index', [AdminController::class, 'index']);
     Route::get('/user', [KeranjangController::class, 'showFood']);
     Route::get('/user/profile',[AdminController::class,'profile']);
+    Route::put('/user/profile/upload',[AdminController::class,'createprofile']);
     Route::get('/user/keranjang/{id}', [KeranjangController::class, 'show'])->name('cart.show');
     Route::post('/user/keranjang/masuk', [KeranjangController::class, 'create']);
     Route::resource('barang', BarangController::class);
