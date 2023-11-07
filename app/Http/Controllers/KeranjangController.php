@@ -63,9 +63,9 @@ class KeranjangController extends Controller
     public function checkout(Request $request)
     {
         $user = Auth::user();
-        $data = Keranjang::where('id_user',$user->id);
-        $databarang = Barang::all();
-        $sum = Keranjang::sum('Jumlah');
+        $data = Keranjang::where('id_user',$user->id)->get();
+        $databarang = Barang::where('id_user',$user->id);
+        $sum = Keranjang::where('id_user',$user->id)->sum('Jumlah');
         $rupiah = number_format($sum, 0, ',', '.');
         return view('user.keranjang.checkout', compact(['data', 'rupiah']));
     }
@@ -103,11 +103,5 @@ class KeranjangController extends Controller
         $pdf = PDF::loadView('user.print', compact(['datakeranjang', 'rupiah', 'user']));
         $pdf->setPaper('A4', 'potrait');
         return $pdf->stream('PDF Pemesanan Lyrafood.pdf');
-    }
-    public function hitung()
-    {
-        $user = Auth::user();
-        $data = Keranjang::where('id_user',$user->id)->count();
-        // return view('partials.header', compact(['data']));
     }
 }
