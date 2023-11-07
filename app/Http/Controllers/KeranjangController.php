@@ -50,8 +50,7 @@ class KeranjangController extends Controller
     {
         $user = Auth::user();
         $data = Keranjang::where('id_user',$user->id)->get();
-        // $data = Keranjang::all();
-        $sum = Keranjang::sum('Jumlah');
+        $sum = Keranjang::where('id_user',$user->id)->sum('jumlah');
         $rupiah = number_format($sum, 0, ',', '.');
         return view('user.keranjang.index', compact(['data', 'rupiah']));
     }
@@ -63,7 +62,8 @@ class KeranjangController extends Controller
     }
     public function checkout(Request $request)
     {
-        $data = Keranjang::all();
+        $user = Auth::user();
+        $data = Keranjang::where('id_user',$user->id);
         $databarang = Barang::all();
         $sum = Keranjang::sum('Jumlah');
         $rupiah = number_format($sum, 0, ',', '.');
@@ -106,7 +106,8 @@ class KeranjangController extends Controller
     }
     public function hitung()
     {
-        $data = Keranjang::count();
-        return view('partials.header', compact(['data']));
+        $user = Auth::user();
+        $data = Keranjang::where('id_user',$user->id)->count();
+        // return view('partials.header', compact(['data']));
     }
 }

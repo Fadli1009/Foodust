@@ -30,14 +30,15 @@
             @if(Auth::user() && Auth::user()->role == "user")
             <a href="{{ url('/keranjang') }}" class="d-flex align-items-center gap-2 dropdown-item position-relative">
               <span class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-primary fs-1">
-                @php
-                $data = DB::table('keranjangs')->count()
-                @endphp
-                {{ $data }}
+                @inject('keranjang','App\Models\Keranjang')
+                {{ count($keranjang::where('id_user',Auth::user()->id)->get()) }}
               </span>
               <i class="ti ti-garden-cart"></i>
               <p class="mb-0 fs-3">Keranjang</p>
             </a>
+            @php
+            $data = $keranjang->where('id_user', Auth::user()->id)->count();
+            @endphp
             @endif
             @endauth
             @guest
