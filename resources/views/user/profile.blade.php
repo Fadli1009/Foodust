@@ -6,6 +6,7 @@
         <h1>profile</h1>
     </div>
     <div class="card-body">
+        <a href="/user" class="btn btn-primary mb-3"><i class="ti ti-arrow-left"></i>Back</a>
         @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}

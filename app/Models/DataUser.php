@@ -9,5 +9,5 @@ class DataUser extends Model
 {
     use HasFactory;
     protected $table = 'data_users';
-    protected $fillable = ['nama', 'telp', 'alamat', 'metodebayar'];
+    protected $fillable = ['nama', 'telp', 'alamat', 'total_pembayaran'];
 }

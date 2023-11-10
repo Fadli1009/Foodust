@@ -18,13 +18,13 @@
                     </div>
                     <div class="mb-3">
                         <label for="select" class="form-label">Kategori Menu</label>
-                        <select class="form-select" aria-label="Default select example" id="select" name="kategoriBarang">
+                        <select class="form-select" aria-label="Default select example" id="select"
+                            name="kategoriBarang">
                             <option selected>Pilih Kategori Menu</option>
                             @foreach ($data as $item)
                             <option value="{{ $item->id }}">{{ $item->namaKategori }}</option>
                             @endforeach
-                    
-                          </select>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="stok" class="form-label">Stok Menu</label>
@@ -33,10 +33,10 @@
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Foto Product</label>
                         <input class="form-control" type="file" id="fotoBarang" name="fotoBarang">
-                      </div>
+                    </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
-        
+
         @endsection

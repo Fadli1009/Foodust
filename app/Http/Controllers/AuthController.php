@@ -45,14 +45,28 @@ class AuthController extends Controller
     }
     public function regis(Request $request)
     {
+        Session::flash('name', $request->name);
+        Session::flash('email', $request->email);
+        Session::flash('password', $request->password);
         $val = $request->validate([
             'name' => ['required'],
             'email' => ['required', 'email'],
-            'password' => ['required']
+            'password' => ['required'],
+            'con_password'=>['required']
+        ],[
+            'name.required'=>'Nama wajib diisi',
+            'email.required'=>'Email wajib disi',
+            'password.required'=>'password wajib diisi',
+            'con_password.required'=>'Konfirmasi password wajib diisi'
         ]);
         $val['password'] = bcrypt($request->password);
-        User::create($val);
-        return redirect('/index');
+        if($request['password'] === $request->input('con_password')){
+            User::create($val);
+            return redirect('/index');
+        }else{
+            return redirect('/registrasi')->withErrors('Konfirmasi Password tidak sama');
+        };
+        
     }
 
     public function logout(Request $request)

@@ -10,6 +10,9 @@
     @endif
     <div class="card p-3">
         <h3 class="my-4">Keranjang</h3>
+        <p class="text-danger fw-bolder">Sebelum menambahkan ke keranjang, klik tombol 'tambah' untuk mengetahui
+            harga
+            nya*</p>
         <form action="{{ url('/user/keranjang/masuk') }}" method="post">
             @csrf
             @method('post')

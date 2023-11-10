@@ -46,5 +46,13 @@ class AdminController extends Controller
         $users = DataUser::all();
         return view('admin.reporting', compact(['users']));
     }
+    public function cari(Request $request){
+        if($request->has('cari')){
+            $makanan = Barang::where('namaBarang','like','%'.$request->cari.'%')->get();
+        }else{
+            $makanan = Barang::all();
+        }
+        return view('user.hasilcari',compact('makanan'));
+    }
 
 }

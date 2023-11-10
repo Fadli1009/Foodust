@@ -25,21 +25,31 @@
                 </a>
                 <h3 class="text-center">Lyra | Registrasi</h3>
                 <p class="text-center">Website Official dari Lyrafood</p>
+                @if($errors->any())
+                <div class="alert alert-danger">
+                  <ul>
+                    @foreach ($errors->all() as $error)
+                    <li style="list-style: circle; margin-left: 10px">{{ $error }}</li>
+                    @endforeach
+                  </ul>
+                </div>
+                @endif
                 <form method="post" action="/regis">
                   @csrf
                   <div class="mb-3">
                     <label for="exampleInputtext1" class="form-label">Name</label>
                     <input type="text" class="form-control" id="exampleInputtext1" aria-describedby="textHelp"
-                      name="name">
+                      name="name" value="{{ Session::get('name') }}">
                   </div>
                   <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email Address</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                      name="email">
+                      name="email" value="{{ Session::get('email') }}">
                   </div>
                   <div class="mb-4">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password"
+                      value="{{ Session::get('password') }}">
                   </div>
                   <div class="mb-4">
                     <label for="exampleInputPassword1" class="form-label">Konfirmasi Passowrd</label>

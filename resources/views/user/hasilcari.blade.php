@@ -9,7 +9,9 @@
                 <input type="search" class="form-control" placeholder="Search" name="cari">
                 <button type="submit" class="btn btn-primary"><i class="ti ti-search fs-4"></i></button>
             </div>
+            <a href="/user" class="btn btn-primary my-3"><i class="ti ti-arrow-left"></i> Back</a>
         </form>
+
         @if ($errors->any())
         <div class="alert alert-danger">
             <ul>

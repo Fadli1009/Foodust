@@ -33,4 +33,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/keranjang/{id}', [KeranjangController::class, 'destroy']);
     Route::resource('kategori', KategoriController::class);
     Route::get('/report', [AdminController::class, 'report']);
+    Route::get('/carimenu',[AdminController::class,'cari']);
 });

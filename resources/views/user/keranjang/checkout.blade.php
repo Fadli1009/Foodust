@@ -22,22 +22,26 @@
                     @method('post')
                     <div class="mb-3">
                         <label for="nama">Nama</label>
-                        <input type="text" class="form-control mt-3" id="nama" name="nama">
+                        <input type="text" class="form-control mt-3" id="nama" name="nama"
+                            value="{{ Session::get('nama') }}">
                     </div>
                     <div class="mb-3">
                         <label for="nama">No Hp</label>
-                        <input type="number" class="form-control mt-3" id="nama" name="telp">
+                        <input type="number" class="form-control mt-3" id="nama" name="telp"
+                            value="{{ Session::get('telp') }}">
                     </div>
                     <div class="mb-3">
                         <label for="nama">Alamat</label>
-                        <textarea name="alamat" class="form-control mt-3" id="" cols="30" rows="10"></textarea>
+                        <textarea name="alamat" class="form-control mt-3" id="" cols="30" rows="10" value{{
+                            Session::get('alamat') }}></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="nama">Bayar Disini :</label>
+                        <label for="nama">Bayar Disini :</label> seharga
                         @if (session('warning'))
                         <p class="text-danger">{{ session('warning')}}</p>
                         @endif
-                        <input type="number" class="form-control mt-3" id="nama" name="metodebayar" id="bayar">
+                        <input type="number" class="form-control mt-3" id="nama" name="total_pembayaran" id="bayar"
+                            value="{{ Session::get('total_pembayaran') }}">
                     </div>
                     <div class="mb-3 d-flex justify-content-between">
                         <button class="btn btn-primary" id='tombol1' type="submit">Buat

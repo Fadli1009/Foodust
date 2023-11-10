@@ -3,12 +3,12 @@
 @section('content')
 <div class="container-fluid">
   @include('partials.headerblank')
-  <a href="/user" class="btn btn-primary mb-3">Back</a>
+  <a href="/user" class="btn btn-primary mb-3"><i class="ti ti-arrow-left"></i>Back</a>
   @if(session('success'))
-    <div class="alert alert-success" role="alert">
-        {{ session('success') }}
-    </div>
-    @endif
+  <div class="alert alert-success" role="alert">
+    {{ session('success') }}
+  </div>
+  @endif
   <h3 class="my-5">Data Cart</h3>
   <div class="table-responsive">
     <table class="table">
@@ -42,9 +42,9 @@
                   stroke-width="0" fill="currentColor"></path>
               </svg>
             </a></td>
-            @empty
-            <td colspan="6" class="text-center">Keranjang Kosong</td>
-          </tr>
+          @empty
+          <td colspan="6" class="text-center">Keranjang Kosong</td>
+        </tr>
         @endforelse
         <tr class="bg-primary text-light">
           <td colspan="5" class="fs-5 fw-bolder">Total</td>
