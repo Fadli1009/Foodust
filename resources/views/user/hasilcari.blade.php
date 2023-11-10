@@ -23,7 +23,7 @@
 
         @endif
         <h3 class="my-3 mt-5">Data Makanan</h3>
-        @foreach ($makanan as $item)
+        @forelse ($makanan as $item)
         <div class="col-sm-6 col-xl-3">
             <div class="card overflow-hidden rounded-2">
                 <h3 class="my-4 ps-2 text-danger">Menu {{ $loop->iteration }}</h3>
@@ -47,7 +47,9 @@
                 </div>
             </div>
         </div>
-        @endforeach
+        @empty
+        <p class="bg-secondary p-3 text-light text-center fs-4">makanan tidak tersedia</p>
+        @endforelse
     </div>
 </div>
 @endsection
