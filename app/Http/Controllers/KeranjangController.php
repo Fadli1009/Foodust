@@ -104,11 +104,14 @@ class KeranjangController extends Controller
     public function printpdf()
     {
         $user = Auth::user();
-        $sum = Keranjang::where('id_user',$user->id)->sum('Jumlah');
         $users = DB::table('data_users')->where('nama',$user->name);
+        $sum = Keranjang::where('id_user',$user->id)->sum('Jumlah');
+        $userdata = DataUser::where('total_pembayaran',$user->id);
+        dd($userdata);
+        $kembalian = $sum - $userdata;
         $rupiah = number_format($sum, 0, ',', '.');
         $datakeranjang = Keranjang::where('id_user',$user->id)->get();
-        $pdf = PDF::loadView('user.print', compact(['datakeranjang', 'rupiah']));
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('user.print', compact(['datakeranjang', 'rupiah','kembalian']));
         $pdf->setPaper('A4', 'potrait');
         return $pdf->stream('PDF Pemesanan Lyrafood.pdf');
     }

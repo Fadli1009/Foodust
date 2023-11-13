@@ -89,7 +89,7 @@
         <div class="total">
             <p>Total Uang:Rp.{{ $rupiah }}</p>
             <p>Total Pembelian:Rp.{{ $rupiah }}</p>
-            <p>Total Kembalian:Rp.{{ $rupiah }}</p>
+            <p>Total Kembalian:Rp.{{ number_format($kembalian,0,'.',',') }}</p>
         </div>
         <footer>
             <p>Selamat Makan</p>

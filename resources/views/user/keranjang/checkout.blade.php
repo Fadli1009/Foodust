@@ -32,8 +32,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="nama">Alamat</label>
-                        <textarea name="alamat" class="form-control mt-3" id="" cols="30" rows="10" value{{
-                            Session::get('alamat') }}></textarea>
+                        <textarea name="alamat" class="form-control mt-3" id="" cols="30" rows="10">{{
+                            Session::get('alamat') }}</textarea>
                     </div>
                     <div class="mb-3">
                         <label for="nama">Bayar Disini :</label> seharga
