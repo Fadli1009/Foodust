@@ -93,6 +93,10 @@ class KeranjangController extends Controller
         if($request['total_pembayaran'] < $sum){
             return back()->withErrors('Uang anda tidak cukup');
         }else{
+            $user = Auth::user();
+            $keranjang = Keranjang::where('id_user',$user->id)->first();
+            $keranjang->total_pembayaran = $request['total_pembayaran'];
+            $keranjang->save();
             DataUser::create($val);
             return redirect('/keranjang/checkout/thanks');
         }
@@ -106,12 +110,13 @@ class KeranjangController extends Controller
         $user = Auth::user();
         $users = DB::table('data_users')->where('nama',$user->name);
         $sum = Keranjang::where('id_user',$user->id)->sum('Jumlah');
-        $userdata = DataUser::where('total_pembayaran',$user->id);
-        dd($userdata);
-        $kembalian = $sum - $userdata;
+        $userbayar = Keranjang::where('id_user',$user->id)->first();
+        $uanguser = Keranjang::where('id_user',$user->id)->first();
+        $ttluang = $uanguser->Total_pembayaran;
+        $kembalian = $userbayar->Total_pembayaran - $sum;
         $rupiah = number_format($sum, 0, ',', '.');
         $datakeranjang = Keranjang::where('id_user',$user->id)->get();
-        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('user.print', compact(['datakeranjang', 'rupiah','kembalian']));
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('user.print', compact(['datakeranjang', 'rupiah','kembalian','ttluang']));
         $pdf->setPaper('A4', 'potrait');
         return $pdf->stream('PDF Pemesanan Lyrafood.pdf');
     }

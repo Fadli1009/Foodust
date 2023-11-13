@@ -23,7 +23,7 @@
                     <div class="mb-3">
                         <label for="nama">Nama</label>
                         <input type="text" class="form-control mt-3" id="nama" name="nama"
-                            value="{{ Session::get('nama') }}">
+                            value="{{ Auth::user()->name }}">
                     </div>
                     <div class="mb-3">
                         <label for="nama">No Hp</label>
