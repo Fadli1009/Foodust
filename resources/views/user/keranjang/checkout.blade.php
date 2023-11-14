@@ -2,7 +2,7 @@
 @section('title','Lyra | Checkout')
 @section('content')
 <div class="container-fluid">
-    @include('partials.headerblank')
+    @include('partials.header')
     <h1 class="mb-3">Checkout</h1>
     <a href="/keranjang" class="btn btn-primary mb-3"><i class="ti ti-arrow-left"></i> Back</a>
     <div class="container">

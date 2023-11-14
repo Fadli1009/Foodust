@@ -16,10 +16,10 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'Fadli',
-            'email' => 'fadli@gmail.com',
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
             'role' => 'admin',
-            'password' => bcrypt('12345')
+            'password' => bcrypt('admin123')
         ]);
     }
 }

@@ -2,7 +2,7 @@
 @section('title','Lyra | Keranjang')
 @section('content')
 <div class="container-fluid">
-  @include('partials.headerblank')
+  @include('partials.header')
   <a href="/user" class="btn btn-primary mb-3"><i class="ti ti-arrow-left"></i>Back</a>
   @if(session('success'))
   <div class="alert alert-success" role="alert">

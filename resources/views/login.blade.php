@@ -22,9 +22,9 @@
                             <div class="card-body">
                                 <a href="#" class="text-nowrap logo-img text-center d-block py-3 w-100">
                                     <img src="{{ asset('assets/images/logos/lyrapp.png') }}" width="100" alt="">
-                                  </a>
-                                  <h3 class="text-center">Lyra | Login</h3>
-                                  <p class="text-center">Website Official dari Lyrafood</p>
+                                </a>
+                                <h3 class="text-center">Lyra | Login</h3>
+                                <p class="text-center">Website Official dari Lyrafood</p>
                                 @if($errors->any())
                                 <div class="alert alert-danger">
                                     <ul>
@@ -47,13 +47,12 @@
                                             name="password">
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between mb-4">
-                                        <a class="text-primary fw-bold" href="./index.html">Forgot Password ?</a>
+                                        <a class="text-primary fw-bold" href="/forgotpassword">Forgot Password ?</a>
                                     </div>
                                     <button class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2" name="submit"
                                         type="submit">Masuk</button>
                                     <div class="d-flex align-items-center justify-content-center">
-                                        <a class="text-primary fw-bold ms-2"
-                                            href="/registrasi">Create an account</a>
+                                        <a class="text-primary fw-bold ms-2" href="/registrasi">Create an account</a>
                                     </div>
                                 </form>
                             </div>

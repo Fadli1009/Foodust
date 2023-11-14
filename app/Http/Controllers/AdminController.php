@@ -54,5 +54,8 @@ class AdminController extends Controller
         }
         return view('user.hasilcari',compact('makanan'));
     }
+    public function forgotpassword(){
+        return view('forogtpassword');
+    }
 
 }

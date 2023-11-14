@@ -35,3 +35,4 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/report', [AdminController::class, 'report']);
     Route::get('/carimenu',[AdminController::class,'cari']);
 });
+Route::get('/forgotpassword',[AdminController::class,'forgotpassword']);
