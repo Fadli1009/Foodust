@@ -12,10 +12,9 @@
                         <div class="card-body">
                             <a href="/login" class="btn btn-primary my-4"><i class="ti ti-arrow-left"></i> Back</a>
 
-                            <form action="{{ route('password.email') }}" method="post">
+                            <form action="{{ route('password.update') }}" method="post">
                                 @csrf
-                                <h4 class="my-3">Forgot Password</h4>
-                                <p>Masukan email anda untuk keperluan login anda</p>
+                                <h4 class="my-3">Reset Password</h4>
                                 @if($errors->any())
                                 <div class="alert alert-danger">
                                     <ul>
@@ -31,9 +30,18 @@
                                 </div>
                                 @endif
                                 <div class="mb-3">
-                                    <label for="email" class="form-label">Email : </label>
-                                    <input type="email" class="form-control" id="email" placeholder="Masukan email anda"
-                                        autocomplete="additional-name" name="email">
+                                    <input type="hidden" value="{{ request()->token }}" name="token">
+                                    <input type="hidden" value="{{ request()->email }}" name="email">
+                                    <label for="password" class="form-label">Password :</label>
+                                    <input type="password" class="form-control" id="password"
+                                        placeholder="Masukan Password baru anda" autocomplete="additional-name"
+                                        name="password">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Konfirmasi Password</label>
+                                    <input type="password" class="form-control" id="email"
+                                        placeholder="Masukan konfirmasi password anda" autocomplete="additional-name"
+                                        name="password_confirmation">
                                 </div>
                                 <div class="mb-3">
                                     <button type="submit" class="btn btn-primary w-100">Kirimkan Link</button>

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-   @include('partials.link')
+    @include('partials.link')
 </head>
 
 <body>
@@ -25,11 +25,12 @@
             <div class="container-fluid">
                 @yield('content')
                 <!--  Row 1 -->
-               @include('partials.footer')
+                @include('partials.footer')
             </div>
         </div>
     </div>
-   @include('partials.script')
+    @yield('partials.loading')
+    @include('partials.script')
 </body>
 
 </html>

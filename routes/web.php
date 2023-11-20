@@ -15,6 +15,12 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/regis', [AuthController::class, 'regis']);
 
     Route::get('/', [AuthController::class, 'menu']);
+    Route::get('/forgotpassword',[AdminController::class,'forgotpassword'])->name('password.request');
+    Route::post('/forgotpassword',[AdminController::class,'funcforgotpassword'])->name('password.email');
+    Route::get('/reset-password/{token}', function ($token) {
+        return view('reset-password', ['token' => $token]);    
+    })->middleware('guest')->name('password.reset');
+    Route::post('/reset-password',[AdminController::class,'resetPassword'])->name('password.update');
 });
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout']);
@@ -35,4 +41,3 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/report', [AdminController::class, 'report']);
     Route::get('/carimenu',[AdminController::class,'cari']);
 });
-Route::get('/forgotpassword',[AdminController::class,'forgotpassword']);
