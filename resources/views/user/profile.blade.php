@@ -3,7 +3,7 @@
 @include('partials.header')
 <div class="card">
     <div class="card-header">
-        <h1>profile</h1>
+        <h1>Profile</h1>
     </div>
     <div class="card-body">
         <a href="/user" class="btn btn-primary mb-3"><i class="ti ti-arrow-left"></i>Back</a>

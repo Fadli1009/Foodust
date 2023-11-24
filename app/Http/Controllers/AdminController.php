@@ -48,7 +48,8 @@ class AdminController extends Controller
     public function report()
     {
         $users = DataUser::all();
-        return view('admin.reporting', compact(['users']));
+        $count = DataUser::count();
+        return view('admin.reporting', compact(['users','count']));
     }
     public function cari(Request $request){
         if($request->has('cari')){
@@ -97,5 +98,11 @@ class AdminController extends Controller
         return $status === Password::PASSWORD_RESET
                     ? redirect()->route('login')->with('status', __($status))
                     : back()->withErrors(['email' => [__($status)]]);
+    }
+    public function filter(Request $request){
+        $start_date = $request->startFilter;
+        $end_date = $request->endFilter;
+        $users = DataUser::whereDate('created_at','>=',$start_date)->whereDate('created_at','<=',$end_date)->get();    
+        return view('admin.reporting',compact('users'));
     }
 }

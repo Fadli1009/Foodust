@@ -24,7 +24,7 @@
         @foreach ($makanan as $item)
         <div class="col-sm-6 col-xl-3">
             <div class="card overflow-hidden rounded-2">
-                <h3 class="my-4 ps-2 text-danger">Menu {{ $loop->iteration }}</h3>
+                <h5 class="my-4 ps-2">Menu {{ $loop->iteration }}</h5>
                 <div class="position-relative">
                     <a href="javascript:void(0)"><img src="{{ asset($item->fotoBarang) }}"
                             class="card-img-top rounded-0" alt="..." height="300"></a>

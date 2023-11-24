@@ -44,7 +44,7 @@
                                         name="password_confirmation">
                                 </div>
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary w-100">Kirimkan Link</button>
+                                    <button type="submit" class="btn btn-primary w-100">Ganti Password</button>
                                 </div>
                             </form>
                         </div>

@@ -97,8 +97,8 @@ class KeranjangController extends Controller
             $keranjang = Keranjang::where('id_user',$user->id)->first();
             $keranjang->total_pembayaran = $request['total_pembayaran'];
             $keranjang->save();
-            $delete = Keranjang::where('id_user',$user->id);
-            $delete->delete();
+            // $delete = Keranjang::where('id_user',$user->id);        
+            // $delete->delete();
             DataUser::create($val);
             return redirect('/keranjang/checkout/thanks');
         }
