@@ -9,7 +9,7 @@
             <h1>Terima Kasih telah memesan makanan kami</h1>
             <h4>Makanan Anda akan dikirim dengan kurir kami, Harap tunggu yaaaa</h4>
             <a href="{{ url('/keranjang/checkout/print') }}" target="_blank" class="btn btn-primary mt-4">Cetak
-                Laporan</a>
+                Nota</a>
         </div>
     </div>
 </div>

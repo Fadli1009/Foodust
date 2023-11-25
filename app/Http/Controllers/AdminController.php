@@ -31,14 +31,16 @@ class AdminController extends Controller
     public function profile(){
         return view('user.profile');
     }
-    public function createprofile(Request $request, User $user){
+    public function createprofile(Request $request){
+        $user = Auth::user();
+        $user_id = User::find($user->id);
         $val = $request->validate([
             'name'=>'required',
-            'email'=>'required|email'. $user->id,
+            'email'=>'required|email',
             'password'=>'required'
         ]);
-        $val['password'] = bcrypt($request->password);
-        $user->update($val);
+        $val['password'] = bcrypt($request->password);        
+        $user_id->update($val);
         return back()->with('success','Berhasil update data');
     }
     public function user(Request $request)
