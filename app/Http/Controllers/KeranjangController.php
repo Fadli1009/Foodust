@@ -82,7 +82,8 @@ class KeranjangController extends Controller
             'nama' => 'required',
             'telp' => 'required',
             'alamat' => 'required',
-            'total_pembayaran' => 'required'
+            'total_pembayaran' => 'required',
+            'id_user'=>'required'
         ],[
             'nama.required'=>'nama wajib diisi',
             'telp.required'=>'nomor hp wajib diisi',

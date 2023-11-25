@@ -6,9 +6,11 @@ use App\Models\User;
 use App\Models\Barang;
 use App\Models\DataUser;
 use App\Models\Kategori;
+use App\Models\Keranjang;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
@@ -104,5 +106,14 @@ class AdminController extends Controller
         $end_date = $request->endFilter;
         $users = DataUser::whereDate('created_at','>=',$start_date)->whereDate('created_at','<=',$end_date)->get();    
         return view('admin.reporting',compact('users'));
+    }
+    public function detail_user($id){
+       $user = DataUser::find($id);
+       $keranjang = Keranjang::where('id_user', $user->id_user)->get();
+       $ttlharga = Keranjang::where('id_user', $user->id_user)->sum('Jumlah');
+       $ttlbayar = Keranjang::where('id_user', $user->id_user)->get('Total_pembayaran')->first();
+       $kembalian = $ttlbayar->Total_pembayaran - $ttlharga;
+    //    dd($keranjang->first()->created_at);
+       return view('admin.detailreport',compact('keranjang','user','ttlharga','ttlbayar','kembalian'));
     }
 }

@@ -41,4 +41,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/report', [AdminController::class, 'report']);
     Route::get('/carimenu',[AdminController::class,'cari']);
     Route::get('/filter',[AdminController::class,'filter'])->name('filter.report');
+    Route::get('/detail/{id}',[AdminController::class,'detail_user'])->name('show.report');
 });

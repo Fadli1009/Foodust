@@ -21,6 +21,7 @@
                     @csrf
                     @method('post')
                     <div class="mb-3">
+                        <input type="hidden" value="{{ Auth::user()->id }}" name="id_user">
                         <label for="nama">Nama</label>
                         <input type="text" class="form-control mt-3" id="nama" name="nama"
                             value="{{ Auth::user()->name }}">

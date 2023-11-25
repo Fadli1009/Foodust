@@ -36,11 +36,13 @@
           <td>{{ $item->telp }}</td>
           <td>{{ $item->alamat }}</td>
           <td>{{ $item->created_at }}</td>
-          <td><a href="" class="btn btn-primary">Detail</a></td>
+          <td><a href="{{ url('/detail',$item->id) }}" class="btn btn-primary">Detail</a></td>
         </tr>
         @endforeach
       </tbody>
     </table>
   </div>
 </div>
+
+
 @endsection

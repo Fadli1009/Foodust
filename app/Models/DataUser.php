@@ -10,7 +10,7 @@ class DataUser extends Model
 {
     use HasFactory;
     protected $table = 'data_users';
-    protected $fillable = ['nama', 'telp', 'alamat', 'total_pembayaran'];
+    protected $fillable = ['nama', 'telp', 'alamat', 'total_pembayaran','id_user'];
     public function getCreatedAtAttribute()
         {
             return Carbon::parse($this->attributes['created_at'])->format('Y-m-d');
