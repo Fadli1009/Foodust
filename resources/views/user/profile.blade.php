@@ -6,7 +6,12 @@
         <h1>Profile</h1>
     </div>
     <div class="card-body">
+        @if (Auth::user() && Auth::user()->role=='user')
         <a href="/user" class="btn btn-primary mb-3"><i class="ti ti-arrow-left"></i>Back</a>
+        @endif
+        @if (Auth::user() && Auth::user()->role=='admin')
+        <a href="/index" class="btn btn-primary mb-3"><i class="ti ti-arrow-left"></i>Back</a>
+        @endif
         @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}

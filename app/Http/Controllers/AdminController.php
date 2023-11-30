@@ -25,7 +25,9 @@ class AdminController extends Controller
         $makanan = DB::table('barang')->paginate(4);
         $makananTable = Barang::with('category')->get();
         $kategori = Kategori::all();
-        return view('admin.index', compact('ttldata', 'ttlcategory', 'makanan', 'kategori', 'makananTable', 'datauser'));
+        $ttluntung = Keranjang::sum('Jumlah');
+        $cekbarang = Barang::where('stokBarang',0)->count();        
+        return view('admin.index', compact('ttldata', 'ttlcategory', 'makanan', 'kategori', 'makananTable', 'datauser','ttluntung','cekbarang'));
     }
 
     public function profile(){

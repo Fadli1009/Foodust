@@ -1,7 +1,7 @@
 @extends('template.base')
 @section('title','Lyra | Admin')
 @section('content')
-<div class="row">
+<div class="row d-flex justify-content-between wrap">
     <div class="card" style="width: 25rem">
         <div class="card-body col">
             <div class="lead">Total Makanan</div>
@@ -9,7 +9,7 @@
             <p class="small text-muted">Total makanan yang ada tersedia</p>
         </div>
     </div>
-    <div class="card col-md-6 col-md-12 mx-auto" style="width: 25rem">
+    <div class="card col-md-6 col-md-12" style="width: 25rem">
         <div class="card-body ">
             <div class="lead">Total Ketegori</div>
             <h2 class="card-title">{{ $ttlcategory }}</h2>
@@ -23,12 +23,27 @@
             <p class="small text-muted">Total Pelanggan</p>
         </div>
     </div>
+    <div class="card col-md- col-md-12" style="width: 25rem">
+        <div class="card-body ">
+            <div class="lead">Total Keuntungan</div>
+            <h2 class="card-title">Rp{{ number_format($ttluntung,0,'.',',') }}</h2>
+            <p class="small text-muted">Total keuntungan dari keseluruhan pembayaran</p>
+        </div>
+    </div>
 </div>
 <div class="row">
     <div class="col-lg-8 d-flex align-items-stretch w-100">
         <div class="card w-100">
             <div class="card-body p-4">
                 <h5 class="card-title fw-semibold mb-4">Data Makanan</h5>
+                @if ($cekbarang)
+
+                <div class="alert alert-danger">
+                    <p>ada <span class="mx-1">{{ $cekbarang }} </span> Makanan yang stok habis
+                        <a href="/barang">Lihat makanan</a>
+                    </p>
+                </div>
+                @endif
                 <div class="table-responsive">
                     <table class="table text-nowrap mb-0 align-middle">
                         <thead class="text-dark fs-4">
@@ -60,8 +75,7 @@
                                     <h6 class="fw-semibold mb-1">{{ $item->namaBarang }}</h6>
                                 </td>
                                 <td class="border-bottom-0">
-                                    <p class="mb-0 fw-normal">{{ $item->category ? $item->category->namaKategori :
-                                        'Gaada Kategori' }}</p>
+                                    <p class="mb-0 fw-normal">{{ $item->kategoriBarang }}</p>
                                 </td>
                                 <td class="border-bottom-0">
                                     <div class="d-flex align-items-center gap-2">

@@ -166,6 +166,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'email'=>[
+            'unique'=>'Email sudah terpakai'
+        ]
     ],
 
     /*

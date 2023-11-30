@@ -25,6 +25,8 @@
                 </a>
                 <h3 class="text-center">Lyra | Registrasi</h3>
                 <p class="text-center">Website Official dari Lyrafood</p>
+                @error('email')
+                @enderror
                 @if($errors->any())
                 <div class="alert alert-danger">
                   <ul>

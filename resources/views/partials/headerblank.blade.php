@@ -1,10 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-  <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+
+  <div class="navbar-collapse justify-content-end px-0 d-flex"" id=" navbarNav">
+    <h2>LyraFood</h2>
     <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
       <li class="nav-item dropdown">
         <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
           aria-expanded="false">
-          <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
+          <button class="btn btn-dark fs-2">Menu <i class="ti ti-arrow-down"></i></button>
         </a>
         <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
           <div class="message-body">

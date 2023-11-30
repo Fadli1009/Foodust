@@ -11,7 +11,9 @@
     @foreach ($data as $item)
     <div class="col-md-4">
         <h5 class="card-title fw-semibold mb-4">Menu {{ $loop->iteration }}</h5>
-        <div class="card">
+        <div class="card @if ($item->stokBarang == 0)
+            bg-danger
+        @endif">
             <img src="{{ asset($item->fotoBarang) }}" class="card-img-top" height="300">
             <div class="card-body">
                 <h5 class="card-title">Nama : {{ $item->namaBarang }}</h5>
@@ -23,7 +25,9 @@
                     <form action="{{ route('barang.destroy', $item->id) }}" method="post">
                         @csrf
                         @method('delete')
-                        <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-danger @if ($item->stokBarang == 0)
+                            bg-primary
+                        @endif">Delete</button>
                     </form>
                 </div>
             </div>

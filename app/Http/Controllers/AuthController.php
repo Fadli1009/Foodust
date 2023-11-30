@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Barang;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -50,7 +52,7 @@ class AuthController extends Controller
         Session::flash('password', $request->password);
         $val = $request->validate([
             'name' => ['required'],
-            'email' => ['required', 'email'],
+            'email' => ['required', 'email', Rule::unique('users','email')],
             'password' => ['required'],
             'con_password'=>['required']
         ],[
@@ -58,14 +60,14 @@ class AuthController extends Controller
             'email.required'=>'Email wajib disi',
             'password.required'=>'password wajib diisi',
             'con_password.required'=>'Konfirmasi password wajib diisi'
-        ]);
-        $val['password'] = bcrypt($request->password);
-        if($request['password'] === $request->input('con_password')){
+        ]);    
+        $val['password'] = bcrypt($request->password);        
+        if($request['password'] === $request->input('con_password')){            
             User::create($val);
             return redirect('/index');
         }else{
             return redirect('/registrasi')->withErrors('Konfirmasi Password tidak sama');
-        };
+        }       
         
     }
 

@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <div class="page-wrapper container" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6"
+  <div class="page-wrapper container-fluid" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6"
     data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
     @include('partials.headerblank')
     <div class="row">

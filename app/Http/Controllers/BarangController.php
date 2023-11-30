@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class BarangController extends Controller
 {
     public function index()
     {
-        $data = Barang::all();
+        $data = Barang::all();        
+        // dd($cekbarang);
         return view('admin.databarang', compact(['data']));
     }
 
@@ -44,20 +46,23 @@ class BarangController extends Controller
 
     public function update(Request $request, $id)
     {
+        Session::flash('fotoBarang', $request->fotoBarang);
         $barang = Barang::findOrFail($id);
-
-        if ($request->hasFile('fotoBarang')) {
-            Storage::delete('public/' . $barang->fotoBarang);
+        
+        if ($request->hasFile('fotoBarang')) {            
             $fileName = time() . $request->file('fotoBarang')->getClientOriginalName();
             $path = $request->file('fotoBarang')->storeAs('images', $fileName, 'public');
+                    
             $barang->fotoBarang = '/storage/' . $path;
+                    
+            Storage::delete('public/' . $barang->fotoBarang);
         }
-
-        // Update data selain gambar
+                
         $barang->fill($request->except('fotoBarang'));
         $barang->save();
-
+        
         return redirect()->route('barang.index')->with('success', 'Berhasil memperbarui data');
+        
     }
 
     public function destroy($id)
