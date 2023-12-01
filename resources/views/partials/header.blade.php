@@ -39,6 +39,10 @@
               <i class="ti ti-garden-cart"></i>
               <p class="mb-0 fs-3">Keranjang</p>
             </a>
+            <a href="/user/history" class="d-flex align-items-center gap-2 dropdown-item">
+              <i class="ti ti-cloud fs-6"></i>
+              <p class="mb-0 fs-3">My History</p>
+            </a>
             @php
             $data = $keranjang->where('id_user', Auth::user()->id)->count();
             @endphp

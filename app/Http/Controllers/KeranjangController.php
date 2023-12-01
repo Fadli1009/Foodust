@@ -42,7 +42,7 @@ class KeranjangController extends Controller
         ]);
             $barang = Barang::where('namaBarang',$request->input('Nama'))->first();
             $jumlah = $request->input('Total');
-            $barang->stokBarang -= $jumlah;
+            $barang->stokBarang -= $jumlah;            
             $barang->save();
             Keranjang::create($val);
             return redirect('/keranjang')->with('success', 'Berhasil ditambahkan ke keranjang');
@@ -94,12 +94,14 @@ class KeranjangController extends Controller
         if($request['total_pembayaran'] < $sum){
             return back()->withErrors('Uang anda tidak cukup');
         }else{
+            $keranjangs = new Keranjang();            
             $user = Auth::user();
             $keranjang = Keranjang::where('id_user',$user->id)->first();
-            $keranjang->total_pembayaran = $request['total_pembayaran'];
-            $keranjang->save();
+            $keranjang->total_pembayaran = $request['total_pembayaran'];            
+            $keranjang->save(); 
+            // $keranjangs->hapuskeranjang($user->id);
             // $delete = Keranjang::where('id_user',$user->id);        
-            // $delete->delete();
+            // $delete->delete();        
             DataUser::create($val);
             return redirect('/keranjang/checkout/thanks');
         }
@@ -123,4 +125,5 @@ class KeranjangController extends Controller
         $pdf->setPaper('A4', 'potrait');
         return $pdf->stream('PDF Pemesanan Lyrafood.pdf');
     }
+    
 }

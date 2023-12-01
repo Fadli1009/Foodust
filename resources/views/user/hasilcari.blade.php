@@ -1,7 +1,7 @@
 @extends('template.blank')
 @section('title','Lyra | Home')
 @section('content')
-<div class="container-fluid">
+<div class="container">
     @include('partials.header')
     <div class="row mt-3">
         <form action="/carimenu" method="get">

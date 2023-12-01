@@ -13,4 +13,7 @@ class Keranjang extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+    public function hapuskeranjang($userid){
+        $this->where('id_user',$userid)->delete();  
+    }
 }

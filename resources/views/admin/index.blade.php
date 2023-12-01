@@ -39,7 +39,7 @@
                 @if ($cekbarang)
 
                 <div class="alert alert-danger">
-                    <p>ada <span class="mx-1">{{ $cekbarang }} </span> Makanan yang stok habis
+                    <p>ada <span>{{ $cekbarang }}</span> Makanan yang stok habis
                         <a href="/barang">Lihat makanan</a>
                     </p>
                 </div>
@@ -66,7 +66,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($makananTable as $item)
+                            @foreach ($makanan as $item)
                             <tr>
                                 <td class="border-bottom-0">
                                     <h6 class="fw-semibold mb-0">{{ $loop->iteration }}</h6>

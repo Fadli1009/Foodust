@@ -1,7 +1,7 @@
 @extends('template.blank')
 @section('title','Lyra | Keranjang')
 @section('content')
-<div class="container-fluid">
+<div class="container">
   @include('partials.header')
   <a href="/user" class="btn btn-primary mb-3"><i class="ti ti-arrow-left"></i>Back</a>
   @if(session('success'))

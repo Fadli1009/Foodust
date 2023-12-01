@@ -18,16 +18,16 @@ use Illuminate\Auth\Events\PasswordReset;
 class AdminController extends Controller
 {
     public function index()
-    {
+    {        
         $ttldata = Barang::count();
         $datauser = DataUser::count();
         $ttlcategory = Kategori::count();
-        $makanan = DB::table('barang')->paginate(4);
-        $makananTable = Barang::with('category')->get();
-        $kategori = Kategori::all();
+        $makanan = Barang::paginate(4);
+        $kategori = Kategori::all();       
+        // dd($makanan->kategoriBarang);
         $ttluntung = Keranjang::sum('Jumlah');
-        $cekbarang = Barang::where('stokBarang',0)->count();        
-        return view('admin.index', compact('ttldata', 'ttlcategory', 'makanan', 'kategori', 'makananTable', 'datauser','ttluntung','cekbarang'));
+        $cekbarang = Barang::where('stokBarang',0)->count();                
+        return view('admin.index', compact('ttldata', 'ttlcategory', 'makanan', 'kategori', 'datauser','ttluntung','cekbarang'));
     }
 
     public function profile(){
@@ -119,5 +119,21 @@ class AdminController extends Controller
        $kembalian = $ttlbayar->Total_pembayaran - $ttlharga;
     //    dd($keranjang->first()->created_at);
        return view('admin.detailreport',compact('keranjang','user','ttlharga','ttlbayar','kembalian'));
+    }
+
+    public function history(){
+        $user = Auth::user();
+        $data = DataUser::where('id_user',$user->id)->get();
+        // dd($data);
+        return view('user.history',compact('data'));
+    }
+    public function detailHistory($id){
+        $user = Auth::user();
+        $keranjang = Keranjang::where('id_user',$user->id)->get();
+        $jumlahkan = Keranjang::sum('Jumlah');
+        $firstItem = $keranjang->first();
+        $tanggal = $firstItem ? $firstItem->created_at : null;
+        return view('user.detailhistory',compact('keranjang','jumlahkan','tanggal'));
+        
     }
 }

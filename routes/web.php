@@ -42,4 +42,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/carimenu',[AdminController::class,'cari']);
     Route::get('/filter',[AdminController::class,'filter'])->name('filter.report');
     Route::get('/detail/{id}',[AdminController::class,'detail_user'])->name('show.report');
+    Route::get('/user/history',[AdminController::class,'history'] );
+    Route::get('/history/{id}',[AdminController::class,'detailHistory'] );
 });

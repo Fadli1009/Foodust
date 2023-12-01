@@ -29,7 +29,7 @@
         </tr>
       </thead>
       <tbody>
-        @foreach ($users as $item)
+        @forelse ($users as $item)
         <tr>
           <th scope="row">{{ $loop->iteration }}</th>
           <td>{{ $item->nama }}
@@ -38,7 +38,9 @@
           <td>{{ $item->created_at }}</td>
           <td><a href="{{ url('/detail',$item->id) }}" class="btn btn-primary">Detail</a></td>
         </tr>
-        @endforeach
+        @empty
+        <td colspan="5" class="text-center">Data kosong</td>
+        @endforelse
       </tbody>
     </table>
   </div>
